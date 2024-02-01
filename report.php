@@ -105,7 +105,7 @@ if (!$users = certificate_get_issues($certificate->id, $DB->sql_fullname(), $gro
 }
 
 // Get extra fields to show the user.
-$extrafields = get_extra_user_fields($context);
+$extrafields = \core_user\fields::for_identity($context)->get_required_fields();
 
 if ($download == "ods") {
     require_once("$CFG->libdir/odslib.class.php");
